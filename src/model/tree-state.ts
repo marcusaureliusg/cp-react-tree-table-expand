@@ -31,6 +31,7 @@ export default class TreeState<T> {
       let result: Array<RowModel<TNodeData>> = [];
       let _top: number = top;
       for (let child of children) {
+        let childVisible = child.data[0].nodeIsExpanded === true ? true : undefined;
         if (child.children != null && child.children.length > 0) { // hasChildren
           const childRowModel = new RowModel(child.data, {  // Metadata
             depth: depth,
@@ -49,7 +50,7 @@ export default class TreeState<T> {
           }
 
           let hasVisibleChildren = false;
-          const grandchildren = _processNode(child.children, depth + 1, index, _top);
+          const grandchildren = _processNode(child.children, depth + 1, index, _top, childVisible);
           const grandchildrenRowModels: Array<RowModel<TNodeData>> = [];
           for (let grandchild of grandchildren) {
             grandchildrenRowModels.push(grandchild);
