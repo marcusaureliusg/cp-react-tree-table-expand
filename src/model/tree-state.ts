@@ -40,7 +40,7 @@ export default class TreeState<T> {
             hasChildren: true,
           }, { // State
             isVisible: isVisible,
-            isExpanded: false,
+            isExpanded: child.data[0].nodeIsExpanded,
             top: _top,
           })
 
@@ -76,7 +76,7 @@ export default class TreeState<T> {
             hasChildren: false,
           }, { // State
             isVisible: isVisible,
-            isExpanded: false,
+            isExpanded: child.data[0].nodeIsExpanded,
             top: _top,
           }));
 
